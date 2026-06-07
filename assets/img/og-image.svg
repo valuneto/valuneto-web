@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" font-family="'Schibsted Grotesk','Segoe UI',system-ui,sans-serif">
+  <rect width="1200" height="630" fill="#F6F8F4"/>
+  <!-- jemná tečkovaná textura vpravo nahoře -->
+  <defs>
+    <pattern id="dots" width="26" height="26" patternUnits="userSpaceOnUse">
+      <circle cx="1.5" cy="1.5" r="1.5" fill="#0C140F" opacity="0.05"/>
+    </pattern>
+  </defs>
+  <rect x="640" y="0" width="560" height="360" fill="url(#dots)"/>
+
+  <!-- logo -->
+  <text x="80" y="118" font-size="40" font-weight="800" letter-spacing="-1">
+    <tspan fill="#0C140F">Valu</tspan><tspan fill="#00C46A">neto</tspan>
+  </text>
+
+  <!-- headline -->
+  <text x="78" y="300" font-size="104" font-weight="900" letter-spacing="-3" fill="#0C140F">Přestaň přeplácet.</text>
+  <text x="78" y="410" font-size="104" font-weight="900" letter-spacing="-3" fill="#00C46A">Ber peníze zpět.</text>
+
+  <!-- podtitul -->
+  <text x="80" y="488" font-size="34" font-weight="500" fill="#556258">Najdeme, kde tečou tvoje peníze — a zastavíme to.</text>
+
+  <!-- champagne pill -->
+  <g transform="translate(80,536)">
+    <rect width="300" height="58" rx="29" fill="#E7C383"/>
+    <text x="150" y="38" text-anchor="middle" font-size="26" font-weight="800" fill="#4A3A12">+23 700 Kč / rok</text>
+  </g>
+</svg>

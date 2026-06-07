@@ -1,0 +1,4 @@
+<svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Valuneto">
+  <rect width="64" height="64" rx="15" fill="#0C140F"/>
+  <path d="M14 21 L29 48 L37.5 32 L52 16" fill="none" stroke="#00C46A" stroke-width="7.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
