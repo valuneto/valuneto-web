@@ -36,7 +36,7 @@
       "url": "https://valuneto.com/",
       "logo": "https://valuneto.com/assets/img/app-icon.svg",
       "email": "ahoj@valuneto.com",
-      "description": "Valuneto propojí tvoje účty, najde, kde tečou peníze, a aktivuje lepší řešení za tebe."
+      "description": "Valuneto propojí tvoje účty, ukáže, kde ti utíkají peníze, a aktivuje lepší řešení za tebe."
     },
     {
       "@type": "WebSite",
@@ -61,7 +61,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800;900&family=Geist+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Geist+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
@@ -93,14 +93,13 @@
   <section class="hero">
     <div class="wrap hero-grid">
       <div class="hero-copy">        <h1>
-          <span class="line">Přestaň</span>
-          <span class="line">přeplácet.</span>
-          <span class="line accent">Ber peníze zpět.</span>
+          <span class="line">Ber peníze zpět.</span>
+          <span class="line accent">Nepřeplácej.</span>
         </h1>
         <p class="lead">Valuneto propojí tvoje účty, najde, kde tečou peníze, a aktivuje lepší řešení za tebe.</p>
         <div class="hero-actions">
-          <a href="#kalkulacka" class="btn btn-primary">Spočítat, kolik přeplácíš</a>
-          <a href="#stahnout" class="btn btn-link">Stáhnout appku <span class="arr">→</span></a>
+          <a href="#kalkulacka" class="btn btn-primary">Zjisti, kde ti utíkají tvoje peníze <span class="arr">→</span></a>
+          <a href="#stahnout" class="btn btn-link">Stáhnout appku</a>
         </div>
         <div class="hero-trust">
           <span class="dots" aria-hidden="true"><span style="background-image:url(assets/img/avatars/a1.jpg)"></span><span style="background-image:url(assets/img/avatars/a2.jpg)"></span><span style="background-image:url(assets/img/avatars/a3.jpg)"></span><span style="background-image:url(assets/img/avatars/a4.jpg)"></span></span>
@@ -108,115 +107,26 @@
         </div>
       </div>
 
-      <div class="hero-visual">
+            <div class="hero-visual">
         <div class="phone" id="heroPhone">
           <span class="phone-badge">+23 700 Kč / rok</span>
           <div class="ph-frame">
-            <div class="ph-scr">
-              <div class="ph-notch"></div>
-              <div class="ph-status"><span>9:41</span><span class="bars"><svg width="16" height="11" viewBox="0 0 17 11" fill="currentColor" aria-hidden="true"><rect x="0" y="6" width="3" height="5" rx="1"/><rect x="4.5" y="4" width="3" height="7" rx="1"/><rect x="9" y="2" width="3" height="9" rx="1"/><rect x="13.5" y="0" width="3" height="11" rx="1"/></svg></span></div>
-
-              <div class="ph-views">
-                <!-- DOMŮ -->
-                <div class="ap-view is-active" data-view="home">
-                  <div class="ap-top">
-                    <div><div class="ap-hello">Dobré ráno, Jano</div><div class="ap-date">Úterý 2. června</div></div>
-                    <div class="ap-av">JN</div>
-                  </div>
-                  <button type="button" class="ap-hero tap" data-go="detail" aria-label="Otevřít detail úspory">
-                    <div class="l">Můžeš ušetřit tento měsíc</div>
-                    <div class="n num" data-count="4120">4 120 Kč</div>
-                    <div class="s">napříč pojištěním, spořením a předplatným</div>
-                    <div class="cta"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg>Aktivovat úsporu</div>
-                  </button>
-                  <button type="button" class="ap-networth tap" data-go="prehled" aria-label="Zobrazit čistou hodnotu">
-                    <div class="ap-nw-top">
-                      <div><div class="k">Čistá hodnota</div><div class="ap-net num" data-count="487200">487 200 Kč</div></div>
-                      <span class="ap-up num">▲ 12 %</span>
-                    </div>
-                    <svg class="ap-chart hero-spark" viewBox="0 0 256 40" preserveAspectRatio="none" role="img" aria-label="Graf rostoucí čisté hodnoty">
-                      <polyline class="spark-line" points="4,34 44,27 84,29 124,17 164,21 212,8 252,3" fill="none" stroke="#00C46A" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
-                      <circle class="spark-dot" cx="252" cy="3" r="3.4" fill="#E7C383"/>
-                    </svg>
-                  </button>
-                  <div class="ap-sec"><h4>Kde přepláceš</h4><span class="ap-seclink" data-go="detail">Vše</span></div>
-                  <div class="ap-list">
-                    <button type="button" class="ap-r tap" data-go="detail"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.5 8.5 8 11 4.5-2.5 8-6 8-11V5z"/></svg></div><div class="mid"><div class="nm">Pojištění auta</div><div class="ds">Stejné krytí o 1 240 Kč levněji</div></div><div class="amt"><div class="a num">+1 240</div><div class="p">Kč / rok</div></div></button>
-                    <button type="button" class="ap-r tap" data-go="detail"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 21v-5h5"/></svg></div><div class="mid"><div class="nm">Předplatná</div><div class="ds">3 nevyužitá za 2 měsíce</div></div><div class="amt"><div class="a num">+680</div><div class="p">Kč / měs</div></div></button>
-                  </div>
-                </div>
-
-                <!-- PŘEHLED / ČISTÁ HODNOTA -->
-                <div class="ap-view" data-view="prehled">
-                  <div class="ap-title">Čistá hodnota</div>
-                  <div class="ap-netrow"><span class="ap-net num">487 200 Kč</span></div>
-                  <div><span class="ap-up num">▲ 52 100 za 6 měsíců</span></div>
-                  <svg class="ap-chart" viewBox="0 0 256 96" role="img" aria-label="Graf růstu čisté hodnoty">
-                    <polyline points="6,86 44,74 84,78 124,50 164,56 212,24 250,8" fill="none" stroke="#00C46A" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
-                    <circle cx="250" cy="8" r="4.2" fill="#E7C383"/>
-                  </svg>
-                  <div class="ap-sec"><h4>Účty a aktiva</h4><span>7</span></div>
-                  <div class="ap-list">
-                    <div class="ap-r"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18"/></svg></div><div class="mid"><div class="nm">Běžné účty</div><div class="ds">3 banky</div></div><div class="amt"><div class="a num" style="color:var(--paper)">128 400</div><div class="p">Kč</div></div></div>
-                    <div class="ap-r"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17 9 11l4 4 8-8"/><path d="M16 7h5v5"/></svg></div><div class="mid"><div class="nm">Investice</div><div class="ds">ETF portfolio</div></div><div class="amt"><div class="a num" style="color:var(--paper)">241 800</div><div class="p">Kč</div></div></div>
-                    <div class="ap-r"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v20M5 6h9a3 3 0 0 1 0 6H7a3 3 0 0 0 0 6h10"/></svg></div><div class="mid"><div class="nm">Spoření</div><div class="ds">4,5 % p.a.</div></div><div class="amt"><div class="a num" style="color:var(--paper)">117 000</div><div class="p">Kč</div></div></div>
-                  </div>
-                </div>
-
-                <!-- TIPY -->
-                <div class="ap-view" data-view="tipy">
-                  <div class="ap-title">Tipy pro tebe</div>
-                  <p class="ap-subt">3 kroky, které ti hned uleví rozpočtu.</p>
-                  <div class="ap-list">
-                    <button type="button" class="ap-r tap" data-go="detail"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg></div><div class="mid"><div class="nm">Přepni dodavatele energie</div><div class="ds">Tarif zdraží za 14 dní</div></div><div class="amt"><div class="a num">+3 400</div><div class="p">Kč / rok</div></div></button>
-                    <div class="ap-r"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5"/></svg></div><div class="mid"><div class="nm">Zruš 3 předplatná</div><div class="ds">Nevyužitá přes 2 měsíce</div></div><div class="amt"><div class="a num">+680</div><div class="p">Kč / měs</div></div></div>
-                    <div class="ap-r"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17 9 11l4 4 8-8"/><path d="M16 7h5v5"/></svg></div><div class="mid"><div class="nm">Přesuň rezervu na spořák</div><div class="ds">4,5 % p.a. místo 0 %</div></div><div class="amt"><div class="a num">+5 200</div><div class="p">Kč / rok</div></div></div>
-                  </div>
-                </div>
-
-                <!-- PROFIL -->
-                <div class="ap-view" data-view="profil">
-                  <div class="ap-profhead">
-                    <div class="ap-av lg">JN</div>
-                    <div><div class="nm">Jana Nováková</div><div class="ds">jana@email.cz</div></div>
-                  </div>
-                  <div class="ap-list">
-                    <div class="ap-r"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18"/></svg></div><div class="mid"><div class="nm">Propojené účty</div><div class="ds">4 banky · PSD2</div></div><div class="amt"><div class="p">›</div></div></div>
-                    <div class="ap-r"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.5 8.5 8 11 4.5-2.5 8-6 8-11V5z"/></svg></div><div class="mid"><div class="nm">Zabezpečení</div><div class="ds">Face ID, PIN</div></div><div class="amt"><div class="p">›</div></div></div>
-                    <div class="ap-r"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg></div><div class="mid"><div class="nm">Notifikace</div><div class="ds">Zapnuté</div></div><div class="amt"><div class="p">›</div></div></div>
-                  </div>
-                </div>
-
-                <!-- DETAIL ÚSPORY -->
-                <div class="ap-view" data-view="detail">
-                  <button type="button" class="ap-back tap" data-go="home"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>Zpět na přehled</button>
-                  <div class="ap-title" style="padding-top:0">Pojištění auta</div>
-                  <p class="ap-subt" style="margin:-6px 0 14px">Našli jsme stejné krytí u jiné pojišťovny — levněji, beze změny podmínek.</p>
-                  <div class="ap-compare">
-                    <div class="ap-cc now"><div class="t">Teď platíš</div><div class="big num">2 480</div><div class="pm">Kč / měs</div></div>
-                    <div class="ap-cc new"><div class="t">Nově</div><div class="big num">1 240</div><div class="pm">Kč / měs</div></div>
-                  </div>
-                  <div class="ap-save"><div class="k">Ušetříš ročně</div><div class="v num">14 880 Kč</div></div>
-                  <div class="ap-list" style="margin-bottom:12px">
-                    <div class="ap-r"><div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></div><div class="mid"><div class="nm">Stejné krytí</div><div class="ds">Havárie, odcizení, živel</div></div></div>
-                    <div class="ap-r"><div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></div><div class="mid"><div class="nm">Papírování za tebe</div><div class="ds">Starou smlouvu ukončíme my</div></div></div>
-                  </div>
-                  <button type="button" class="ap-bigcta tap" data-go="home"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg>Aktivovat za 1 klik</button>
-                </div>
-              </div>
-
-              <div class="ap-nav">
-                <button type="button" class="act" data-go="home"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>Domů</button>
-                <button type="button" data-go="prehled"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>Přehled</button>
-                <button type="button" data-go="tipy"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0-4 10c.7.7 1 1.3 1 2h6c0-.7.3-1.3 1-2a6 6 0 0 0-4-10z"/><path d="M9 18h6M10 21h4"/></svg>Tipy</button>
-                <button type="button" data-go="profil"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.5-6 8-6s8 2 8 6"/></svg>Profil</button>
-              </div>
-              <div class="ph-home"></div>
-            </div>
+            <div class="ph-scr"><img class="ph-shot" src="assets/img/screen-prehled.png" alt="Aplikace Valuneto – přehled financí: čisté jmění 235 850 Kč a propojené účty (ČSOB, Air Bank, Portu) na jednom místě" loading="lazy"></div>
           </div>
         </div>
       </div>
     </div>
+  </section>
+
+  <!-- TRUST STRIP -->
+  <section class="trust-strip" aria-label="Zázemí a důvěra">
+    <div class="wrap trust-row">
+      <span class="trust-item"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.5 8.5 8 11 4.5-2.5 8-6 8-11V5z"/></svg>Pod křídly <strong>ČSOB</strong> (skupina KBC)</span>
+      <span class="trust-item"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>Připojení účtů <strong>jen pro čtení</strong></span>
+      <span class="trust-item"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Bankovní šifrování (PSD2)</span>
+      <span class="trust-item"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><strong>Made in the Czech Republic</strong></span>
+    </div>
+    <div class="wrap trust-cta"><a href="bezpecnost.html" class="btn btn-link">Jak chráníme tvoje data <span class="arr">→</span></a></div>
   </section>
 
   <!-- TICKER -->
@@ -231,109 +141,22 @@
   <!-- NÁHLED APLIKACE -->
   <section class="section appshow" id="appka">
     <div class="wrap">
-      <div class="section-head wide reveal">        <h2>Celé tvoje peníze<br>v jedné appce.</h2>
+      <div class="section-head wide reveal">        <h2>Celé tvoje peníze<br>v jedné aplikaci.</h2>
         <p class="lead" style="margin-top:1rem">Žádné tabulky ani deset přihlášení. Přehled, úspory i čistá hodnota na jednom místě.</p>
       </div>
 
-      <div class="app-row reveal" role="list" aria-label="Ukázky obrazovek aplikace Valuneto">
-        <!-- Phone 1: Domů -->
+            <div class="app-row reveal" role="list" aria-label="Ukázky obrazovek aplikace Valuneto">
         <div class="ph" role="listitem">
-          <div class="ph-frame">
-            <div class="ph-scr">
-              <div class="ph-notch"></div>
-              <div class="ph-status"><span>9:41</span><span class="bars"><svg width="16" height="11" viewBox="0 0 17 11" fill="currentColor" aria-hidden="true"><rect x="0" y="6" width="3" height="5" rx="1"/><rect x="4.5" y="4" width="3" height="7" rx="1"/><rect x="9" y="2" width="3" height="9" rx="1"/><rect x="13.5" y="0" width="3" height="11" rx="1"/></svg></span></div>
-              <div class="ph-body">
-                <div class="ap-top">
-                  <div><div class="ap-hello">Dobré ráno, Jane</div><div class="ap-date">Úterý 2. června</div></div>
-                  <div class="ap-av">JP</div>
-                </div>
-                <div class="ap-hero">
-                  <div class="l">Můžeš ušetřit tento měsíc</div>
-                  <div class="n num">4 120 Kč</div>
-                  <div class="s">napříč pojištěním, spořením a předplatným</div>
-                  <div class="cta"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg>Aktivovat úsporu</div>
-                </div>
-                <div class="ap-stats">
-                  <div class="ap-stat"><div class="k">Ušetřeno celkem</div><div class="v">18 940 <u>Kč</u></div></div>
-                  <div class="ap-stat"><div class="k">Propojené účty</div><div class="v">4 <u>banky</u></div></div>
-                </div>
-                <div class="ap-sec"><h4>Kde přepláceš</h4><a href="#appka">Vše</a></div>
-                <div class="ap-list">
-                  <div class="ap-r"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.5 8.5 8 11 4.5-2.5 8-6 8-11V5z"/></svg></div><div class="mid"><div class="nm">Pojištění auta</div><div class="ds">Stejné krytí o 1 240 Kč levněji</div></div><div class="amt"><div class="a num">+1 240</div><div class="p">Kč / rok</div></div></div>
-                  <div class="ap-r"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 21v-5h5"/></svg></div><div class="mid"><div class="nm">Předplatná</div><div class="ds">3 nevyužitá za 2 měsíce</div></div><div class="amt"><div class="a num">+680</div><div class="p">Kč / měs</div></div></div>
-                  <div class="ap-r"><div class="ic w"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg></div><div class="mid"><div class="nm">Energie</div><div class="ds">Zdražení tarifu za 14 dní</div></div><div class="amt"><div class="a warn">Akce</div><div class="p">do 16. 6.</div></div></div>
-                </div>
-              </div>
-              <div class="ap-nav">
-                <a class="act" href="#appka"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>Domů</a>
-                <a href="#appka"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>Přehled</a>
-                <a href="#appka"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0-4 10c.7.7 1 1.3 1 2h6c0-.7.3-1.3 1-2a6 6 0 0 0-4-10z"/><path d="M9 18h6M10 21h4"/></svg>Tipy</a>
-                <a href="#appka"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.5-6 8-6s8 2 8 6"/></svg>Profil</a>
-              </div>
-              <div class="ph-home"></div>
-            </div>
-          </div>
-          <p class="ph-cap">Domů<small>Co můžeš ušetřit hned teď</small></p>
+          <div class="ph-frame"><div class="ph-scr"><img class="ph-shot" src="assets/img/screen-prihlaseni.png" alt="Přihlášení do Valuneto: peníze pod kontrolou za 2 minuty, přes Google nebo Apple" loading="lazy"></div></div>
+          <p class="ph-cap">Začni za 2 minuty<small>Přihlas se přes Google nebo Apple</small></p>
         </div>
-
-        <!-- Phone 2: Čistá hodnota -->
         <div class="ph" role="listitem">
-          <div class="ph-frame">
-            <div class="ph-scr">
-              <div class="ph-notch"></div>
-              <div class="ph-status"><span>9:41</span><span class="bars"><svg width="16" height="11" viewBox="0 0 17 11" fill="currentColor" aria-hidden="true"><rect x="0" y="6" width="3" height="5" rx="1"/><rect x="4.5" y="4" width="3" height="7" rx="1"/><rect x="9" y="2" width="3" height="9" rx="1"/><rect x="13.5" y="0" width="3" height="11" rx="1"/></svg></span></div>
-              <div class="ph-body">
-                <div class="ap-title">Čistá hodnota</div>
-                <div class="ap-netrow"><span class="ap-net num">487 200 Kč</span></div>
-                <div><span class="ap-up num">▲ 52 100 za 6 měsíců</span></div>
-                <svg class="ap-chart" viewBox="0 0 256 96" role="img" aria-label="Graf růstu čisté hodnoty">
-                  <polyline points="6,86 44,74 84,78 124,50 164,56 212,24 250,8" fill="none" stroke="#00C46A" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
-                  <circle cx="250" cy="8" r="4.2" fill="#E7C383"/>
-                </svg>
-                <div class="ap-sec"><h4>Účty a aktiva</h4><a href="#appka">7</a></div>
-                <div class="ap-list">
-                  <div class="ap-r"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18"/></svg></div><div class="mid"><div class="nm">Běžné účty</div><div class="ds">3 banky</div></div><div class="amt"><div class="a num" style="color:var(--paper)">128 400</div><div class="p">Kč</div></div></div>
-                  <div class="ap-r"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17 9 11l4 4 8-8"/><path d="M16 7h5v5"/></svg></div><div class="mid"><div class="nm">Investice</div><div class="ds">ETF portfolio</div></div><div class="amt"><div class="a num" style="color:var(--paper)">241 800</div><div class="p">Kč</div></div></div>
-                  <div class="ap-r"><div class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v20M5 6h9a3 3 0 0 1 0 6H7a3 3 0 0 0 0 6h10"/></svg></div><div class="mid"><div class="nm">Spoření</div><div class="ds">4,5 % p.a.</div></div><div class="amt"><div class="a num" style="color:var(--paper)">117 000</div><div class="p">Kč</div></div></div>
-                </div>
-              </div>
-              <div class="ap-nav">
-                <a href="#appka"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>Domů</a>
-                <a class="act" href="#appka"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>Přehled</a>
-                <a href="#appka"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0-4 10c.7.7 1 1.3 1 2h6c0-.7.3-1.3 1-2a6 6 0 0 0-4-10z"/><path d="M9 18h6M10 21h4"/></svg>Tipy</a>
-                <a href="#appka"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.5-6 8-6s8 2 8 6"/></svg>Profil</a>
-              </div>
-              <div class="ph-home"></div>
-            </div>
-          </div>
-          <p class="ph-cap">Čistá hodnota<small>Všechny účty v jednom čísle</small></p>
+          <div class="ph-frame"><div class="ph-scr"><img class="ph-shot" src="assets/img/screen-tarif.png" alt="Doporučení Valuneto: mobilní tarif z 749 Kč na 519 Kč, roční úspora 2 760 Kč" loading="lazy"></div></div>
+          <p class="ph-cap">Úspora na míru<small>Stejné pokrytí i číslo, nižší cena</small></p>
         </div>
-
-        <!-- Phone 3: Detail úspory -->
         <div class="ph" role="listitem">
-          <div class="ph-frame">
-            <div class="ph-scr">
-              <div class="ph-notch"></div>
-              <div class="ph-status"><span>9:41</span><span class="bars"><svg width="16" height="11" viewBox="0 0 17 11" fill="currentColor" aria-hidden="true"><rect x="0" y="6" width="3" height="5" rx="1"/><rect x="4.5" y="4" width="3" height="7" rx="1"/><rect x="9" y="2" width="3" height="9" rx="1"/><rect x="13.5" y="0" width="3" height="11" rx="1"/></svg></span></div>
-              <div class="ph-body">
-                <div class="ap-back"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>Zpět na přehled</div>
-                <div class="ap-title" style="padding-top:0">Pojištění auta</div>
-                <p style="color:var(--slate-2);font-size:12.5px;margin:-8px 0 14px;line-height:1.5">Našli jsme stejné krytí u jiné pojišťovny — levněji, beze změny podmínek.</p>
-                <div class="ap-compare">
-                  <div class="ap-cc now"><div class="t">Teď platíš</div><div class="big num">2 480</div><div class="pm">Kč / měs</div></div>
-                  <div class="ap-cc new"><div class="t">Nově</div><div class="big num">1 240</div><div class="pm">Kč / měs</div></div>
-                </div>
-                <div class="ap-save"><div class="k">Ušetříš ročně</div><div class="v num">14 880 Kč</div></div>
-                <div class="ap-list" style="margin-bottom:12px">
-                  <div class="ap-r"><div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></div><div class="mid"><div class="nm">Stejné krytí</div><div class="ds">Havárie, odcizení, živel</div></div></div>
-                  <div class="ap-r"><div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></div><div class="mid"><div class="nm">Papírování za tebe</div><div class="ds">Starou smlouvu ukončíme my</div></div></div>
-                </div>
-                <div class="ap-bigcta"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg>Aktivovat za 1 klik</div>
-              </div>
-              <div class="ph-home"></div>
-            </div>
-          </div>
-          <p class="ph-cap">Detail úspory<small>Jeden klik a řešíme to za tebe</small></p>
+          <div class="ph-frame"><div class="ph-scr"><img class="ph-shot" src="assets/img/screen-uniky.png" alt="Únik peněz ve Valuneto: −11 520 Kč ročně napříč energiemi, pojištěním a poplatky" loading="lazy"></div></div>
+          <p class="ph-cap">Vidíš, kde utíkají<small>Všechny přeplatky na jednom místě</small></p>
         </div>
       </div>
 
@@ -418,7 +241,7 @@
   <!-- JAK TO FUNGUJE -->
   <section class="section" id="jak">
     <div class="wrap">
-      <div class="section-head reveal">        <h2>Tři kroky<br>k vaší úspoře.</h2>
+      <div class="section-head reveal">        <h2>Tři kroky<br>k tvé úspoře.</h2>
       </div>
       <ol class="steps">
         <li class="step reveal"><span class="n">01</span><h3>Propojíš účty</h3><p>Banky, pojistky, předplatná a investice na jednom místě. Jen pro čtení — Valuneto se nikdy nedotkne tvých peněz.</p></li>
@@ -426,6 +249,22 @@
         <li class="step reveal"><span class="n">03</span><h3>Aktivuješ úsporu</h3><p>Jedním klikem spustíš lepší řešení — levnější smlouvu, zrušení nebo přesun peněz. Zbytek vyřešíme za tebe.</p></li>
       </ol>
       <div style="margin-top:2.5rem" class="reveal"><a href="jak-to-funguje.html" class="btn btn-ghost">Podrobně, jak to funguje <span aria-hidden="true">→</span></a></div>
+    </div>
+  </section>
+
+  <!-- PROČ VALUNETO (diferenciátor) -->
+  <section class="section whyus" id="proc-valuneto">
+    <div class="wrap">
+      <div class="section-head wide reveal">
+        <h2>Poradit umí každý.<br>My to dotáhneme<br>do konce.</h2>
+        <p class="lead" style="margin-top:1rem">Účet, úvěr, hypotéka, pojištění i investice — porovnáme napříč trhem a vyřídíme za tebe od první nabídky po podpis. Bez nahrávání výpisů do cizích nástrojů.</p>
+      </div>
+      <div class="why-grid reveal">
+        <div class="why-card"><h3>Dotáhneme to do konce</h3><p>Nejen tip. Ukončíme starou smlouvu, přesuneme peníze, podepíšeme novou. Papírování bereme na sebe.</p></div>
+        <div class="why-card"><h3>Porovnáme celý trh</h3><p>Vybíráme i z produktů jiných bank a pojišťoven, ne jen z jednoho katalogu.</p></div>
+        <div class="why-card"><h3>České metodiky, ne odhad</h3><p>Reálné sazby, krytí a podmínky podle českého trhu. Tohle ti žádný univerzální chatbot nespočítá.</p></div>
+        <div class="why-card"><h3>Data jen pro čtení</h3><p>Vidíme zůstatky a smlouvy, hýbeš s penězi jen ty. Výpisy nikam nenahráváš.</p></div>
+      </div>
     </div>
   </section>
 
@@ -490,7 +329,7 @@
   <section class="section" id="stahnout">
     <div class="wrap">
       <div class="cta-block reveal">
-        <h2>Zjisti, kde tečou tvoje peníze.</h2>
+        <h2>Zjisti, kde ti utíkají tvoje peníze.</h2>
         <p>Zapiš se na waitlist a buď u spuštění mezi prvními. Pošleme ti i tvůj první odhad úspory.</p>
         <form class="waitlist" id="waitlistForm" novalidate>
           <label for="email" class="sr-only">E-mail</label>
@@ -502,6 +341,19 @@
           <a href="#stahnout" class="store" aria-label="Stáhnout z App Store"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 12.6c0-2 1.6-3 1.7-3-1-1.4-2.4-1.6-2.9-1.6-1.2-.1-2.4.7-3 .7-.6 0-1.6-.7-2.6-.7-1.3 0-2.6.8-3.3 2-1.4 2.4-.4 6 1 8 .6 1 1.4 2.1 2.4 2 1-.04 1.3-.6 2.5-.6s1.5.6 2.6.6c1 0 1.7-1 2.4-2 .7-1.2 1-2.3 1-2.4-.02-.01-1.9-.7-2-2.7zM14.6 6.3c.5-.6.9-1.5.8-2.3-.8 0-1.7.5-2.2 1.1-.5.5-.9 1.4-.8 2.2.9.1 1.8-.4 2.2-1z"/></svg><span><small>Stáhnout z</small>App Store</span></a>
           <a href="#stahnout" class="store" aria-label="Stáhnout z Google Play"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.6 2.3c-.3.3-.4.7-.4 1.3v16.8c0 .6.1 1 .4 1.3l.1.1L13 12.1v-.2L3.7 2.2zM16.4 15.3l-3.1-3.1v-.2l3.1-3.1.1.04 3.7 2.1c1 .6 1 1.6 0 2.2l-3.7 2.1zM13.3 12.2l3.2 3.2-9.6 5.5c-.4.2-.7.2-1 0zM13.3 11.8L6.9 3.1c.3-.2.6-.2 1 0l9.6 5.5z"/></svg><span><small>Stáhnout z</small>Google Play</span></a>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section faq" id="faq">
+    <div class="wrap">
+      <div class="section-head reveal"><h2>Časté dotazy</h2></div>
+      <div class="faq-list reveal">
+        <details class="faq-q"><summary>Nahrávám svoje bankovní výpisy do nějaké AI?</summary><p>Ne. Valuneto se k účtům připojuje přes regulované bankovní rozhraní (PSD2) jen pro čtení. Výpisy nikam nenahráváš a my je neposíláme do žádných cizích nástrojů.</p></details>
+        <details class="faq-q"><summary>Může Valuneto sáhnout na moje peníze?</summary><p>Nemůže. Vidíme zůstatky a smlouvy, ale jakýkoli pohyb peněz potvrzuješ jen ty ve své bance.</p></details>
+        <details class="faq-q"><summary>Kdo za Valuneto stojí?</summary><p>Valuneto vzniká pod křídly ČSOB (skupina KBC). Made in the Czech Republic.</p></details>
+        <details class="faq-q"><summary>Jak rychle se zase odpojím?</summary><p>Jedním klikem zrušíš přístup a smažeš data. Žádné dlouhé maily ani podmínky.</p></details>
       </div>
     </div>
   </section>
@@ -526,7 +378,7 @@
         <h4>Důvěra</h4>
         <a href="bezpecnost.html">Bezpečnost</a>
         <a href="bezpecnost.html#data">Ochrana dat</a>
-        <a href="#">Časté dotazy</a>
+        <a href="#faq">Časté dotazy</a>
       </div>
       <div>
         <h4>Kontakt</h4>
@@ -537,7 +389,7 @@
     </div>
     <div class="footer-bottom">
       <span>© <span id="year">2026</span> Valuneto</span>
-      <span>Made in Czechia · <a href="#" style="display:inline">Podmínky</a> · <a href="#" style="display:inline">Soukromí</a></span>
+      <span>Made in the Czech Republic · <a href="#" style="display:inline">Podmínky</a> · <a href="#" style="display:inline">Soukromí</a></span>
     </div>
   </div>
 </footer>
