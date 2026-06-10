@@ -1,12 +1,12 @@
 /* ============================================================
-   VALUNETO — web stylesheet
+   VALUNETO - web stylesheet
    Koncept: tmavý ink základ, net green signature, produkt jako hrdina.
    Brand v1.0 (Ink/Paper/Net green/Deep green/Champagne/Signal/Slate).
    Typo: Outfit (nadpisy + text + čísla, sjednocené) + Geist Mono (datové štítky).
    ============================================================ */
 
 :root {
-  /* brand — SVĚTLÉ TÉMA
+  /* brand - SVĚTLÉ TÉMA
      ink* = světlé povrchy/pozadí, paper* = tmavé (primární text + tmavé plochy).
      Tmavé mockupy si původní tmavou paletu obnovují lokálně níže (.phone, .ph-frame). */
   --ink:        #F6F8F4;   /* základní světlé pozadí stránky */
@@ -116,7 +116,7 @@ h3 { font-size: var(--step-1); font-weight: 700; letter-spacing: -0.02em; line-h
 .lead { font-size: var(--step-1); color: var(--slate-2); line-height: 1.5; font-weight: 500; }
 .muted { color: var(--slate-2); }
 .num { font-family: var(--f-mono); font-weight: 700; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
-/* velká čísla — zarovnané tabulkové číslice (stabilní šířka pro count-up) */
+/* velká čísla - zarovnané tabulkové číslice (stabilní šířka pro count-up) */
 .phone-net, .calc-result .total, .ap-hero .n, .ap-net, .ap-save .v,
 .growth-stats .s .v, .growth-card .top .big, .ticker strong {
   font-variant-numeric: tabular-nums;
@@ -392,6 +392,7 @@ input[type="range"]::-moz-range-thumb { width: 22px; height: 22px; border: 3px s
 
 /* prose for subpages */
 .prose { max-width: 70ch; }
+.prose > :first-child { margin-top: 0; } /* zabraňuje protlačení margin ven ze sekce (světlý pruh) */
 .prose h2 { font-size: var(--step-2); margin: 2.5rem 0 1rem; }
 .prose h3 { margin: 1.6rem 0 0.6rem; }
 .prose p { margin-bottom: 1rem; color: var(--slate-2); }
@@ -410,7 +411,7 @@ input[type="range"]::-moz-range-thumb { width: 22px; height: 22px; border: 3px s
 .is-light .faq details p { color: var(--slate-on-light); }
 
 /* ============================================================
-   NÁHLED APLIKACE — phone showcase (Valuneto dark theme)
+   NÁHLED APLIKACE - phone showcase (Valuneto dark theme)
    ============================================================ */
 .appshow { border-top: 1px solid var(--ink-line); }
 .app-row {
@@ -506,7 +507,7 @@ input[type="range"]::-moz-range-thumb { width: 22px; height: 22px; border: 3px s
 .hero-spark { width: 100%; height: auto; margin-top: 4px; }
 
 /* ============================================================
-   HERO TELEFON — proklikávací demo + animace
+   HERO TELEFON - proklikávací demo + animace
    ============================================================ */
 @keyframes vn-floaty { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
 @keyframes vn-draw { to { stroke-dashoffset: 0; } }
@@ -540,7 +541,7 @@ button.ap-hero, button.ap-networth, button.ap-r { width: 100%; text-align: left;
 .ap-profhead .nm { color: var(--paper); font-size: 16px; font-weight: 600; }
 .ap-profhead .ds { color: var(--slate); font-size: 12px; margin-top: 2px; }
 
-/* hero telefon — kompaktní rozvržení, ať se vejde celá obrazovka */
+/* hero telefon - kompaktní rozvržení, ať se vejde celá obrazovka */
 #heroPhone .ph-scr { height: 600px; }
 #heroPhone .ap-top { padding: 4px 0 12px; }
 #heroPhone .ap-hero { padding: 15px 16px 14px; margin-bottom: 11px; }
@@ -562,7 +563,7 @@ button.ap-hero, button.ap-networth, button.ap-r { width: 100%; text-align: left;
   #heroPhone .spark-line { stroke-dashoffset: 0; }
 }
 
-/* ---------- kde tečou — dvousloupcová hlavička ---------- */
+/* ---------- kde tečou - dvousloupcová hlavička ---------- */
 .kde-head { max-width: none; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: clamp(1.5rem, 5vw, 4rem); align-items: end; }
 .kde-head h2 { margin-top: 0; }
 .kde-aside .lead { margin-bottom: 1.4rem; }

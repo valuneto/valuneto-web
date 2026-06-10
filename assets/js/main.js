@@ -1,4 +1,4 @@
-/* Valuneto — interakce (vanilla JS, bez závislostí) */
+/* Valuneto - interakce (vanilla JS, bez závislostí) */
 (function () {
   "use strict";
 
@@ -6,7 +6,7 @@
   var y = document.getElementById("year");
   if (y) y.textContent = new Date().getFullYear();
 
-  /* sticky header — solidní pozadí po odscrollování */
+  /* sticky header - solidní pozadí po odscrollování */
   var header = document.getElementById("header");
   if (header) {
     var onScroll = function () {
@@ -104,10 +104,10 @@
       var email = document.getElementById("email");
       if (!email.value || !email.checkValidity()) {
         email.focus();
-        if (note) { note.textContent = "Zkontroluj prosím e-mail — vypadá, že tam něco chybí."; note.style.fontWeight = "600"; }
+        if (note) { note.textContent = "Zkontroluj prosím e-mail, vypadá to, že tam něco chybí."; note.style.fontWeight = "600"; }
         return;
       }
-      form.innerHTML = '<p style="font-family:var(--f-display);font-weight:700;font-size:var(--step-1);color:var(--ink)">Hotovo — jsi ve frontě.</p>';
+      form.innerHTML = '<p style="font-family:var(--f-display);font-weight:700;font-size:var(--step-1);color:var(--ink)">Hotovo! Jsi ve frontě.</p>';
       if (note) note.textContent = "Ozveme se na " + email.value + " s tvým prvním odhadem úspory.";
     });
   }
@@ -117,7 +117,7 @@
   if (heroPhone) {
     var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    /* proklikávací demo — přepínání obrazovek */
+    /* proklikávací demo - přepínání obrazovek */
     var views = heroPhone.querySelectorAll(".ap-view");
     var navBtns = heroPhone.querySelectorAll(".ap-nav [data-go]");
     var showView = function (name) {
