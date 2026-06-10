@@ -3,6 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>
+  /* Drž v adresním řádku čistou URL — nikdy nezobrazuj index.html */
+  (function () {
+    try {
+      var p = location.pathname;
+      if (/index\.html$/.test(p)) {
+        history.replaceState(null, '', p.replace(/index\.html$/, '') + location.search + location.hash);
+      }
+    } catch (e) {}
+  })();
+</script>
 <title>Valuneto — Ber peníze zpět. Nepřeplácej.</title>
 <meta name="description" content="Valuneto propojí tvoje účty, najde, kde ti utíkají peníze — pojištění, spoření, předplatná, poplatky — a aktivuje lepší řešení za tebe. Za 15 minut, bez tabulek.">
 <meta name="theme-color" content="#F6F8F4">
@@ -74,7 +85,7 @@
     <div class="nav-menu" id="navMenu">
       <nav class="nav-links" aria-label="Hlavní">
         <a href="#aplikace">Aplikace</a>
-        <a href="#kde-utíkají">Co najdeme</a>
+        <a href="#co-najdeme">Co najdeme</a>
         <a href="#kalkulacka">Kalkulačka</a>
         <a href="jak-to-funguje">Jak to funguje</a>
         <a href="bezpecnost">Bezpečnost</a>
@@ -139,7 +150,7 @@
   </section>
 
   <!-- NÁHLED APLIKACE -->
-  <section class="section appshow" id="appka">
+  <section class="section appshow" id="aplikace">
     <div class="wrap">
       <div class="section-head wide reveal">        <h2>Celé tvoje peníze<br>v jedné aplikaci.</h2>
         <p class="lead" style="margin-top:1rem">JEDNO přihlášení. Přehled, úspory a čistá hodnota na jednom místě.</p>
@@ -165,7 +176,7 @@
   </section>
 
   <!-- KDE UTÍKAJÍ PENÍZE -->
-  <section class="section" id="kde-utíkají">
+  <section class="section" id="co-najdeme">
     <div class="wrap">
       <div class="section-head kde-head reveal">
         <h2>Většina lidí ztrácí<br>peníze tam, kam<br>se nedívá.</h2>
@@ -369,7 +380,7 @@
       </div>
       <div>
         <h4>Produkt</h4>
-        <a href="#kde-utíkají">Co najdeme</a>
+        <a href="#co-najdeme">Co najdeme</a>
         <a href="#kalkulacka">Kalkulačka</a>
         <a href="jak-to-funguje">Jak to funguje</a>
         <a href="#stahnout">Stáhnout aplikaci</a>
