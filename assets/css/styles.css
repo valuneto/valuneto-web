@@ -161,8 +161,11 @@ em.hl { font-style: normal; color: var(--net); }
   border-bottom-color: var(--ink-line);
 }
 .nav { display: flex; align-items: center; justify-content: space-between; height: 72px; }
-.brand { font-family: var(--f-display); font-size: 1.5rem; font-weight: 700; letter-spacing: -0.03em; color: var(--paper); }
+.brand { display: inline-flex; align-items: center; gap: .34em; font-family: var(--f-display); font-size: 1.5rem; font-weight: 700; letter-spacing: -0.03em; color: var(--paper); }
 .brand .neto { color: var(--net); }
+.brand-mark { height: 1.28em; width: auto; flex: none; display: block; }
+.brand-wm { display: inline-block; }
+.footer-brand .brand { display: inline-flex; }  /* přebije .footer-grid a { display:block } */
 .nav-links { display: flex; align-items: center; gap: clamp(1rem, 2.5vw, 2rem); }
 .nav-links a { font-size: var(--step--1); font-weight: 500; color: var(--slate-2); transition: color 0.18s var(--ease); }
 .nav-links a:hover { color: var(--paper); }
@@ -216,7 +219,7 @@ em.hl { font-style: normal; color: var(--net); }
 
 @media (max-width: 880px) {
   .hero-grid { grid-template-columns: 1fr; }
-  .hero-visual { order: -1; max-width: 340px; margin-inline: auto; }
+  .hero-visual { max-width: 340px; margin-inline: auto; }
 }
 
 /* ---------- phone mockup ---------- */

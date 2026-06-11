@@ -99,6 +99,7 @@
   var form = document.getElementById("waitlistForm");
   if (form) {
     var note = document.getElementById("waitlistNote");
+    var WAITLIST_ENDPOINT = "https://script.google.com/macros/s/AKfycbyiQcBZBZpaSqGc6AbwlNuIEHogewnyTYGpSB95CMLMLpo-o34Tfh8GR4mkT7kuPki03A/exec"; // ← sem vlož URL nasazeného Google Apps Scriptu (…/exec). Prázdné = záloha přes FormSubmit (e-mail).
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       var email = document.getElementById("email");
@@ -107,8 +108,33 @@
         if (note) { note.textContent = "Zkontroluj prosím e-mail, vypadá to, že tam něco chybí."; note.style.fontWeight = "600"; }
         return;
       }
-      form.innerHTML = '<p style="font-family:var(--f-display);font-weight:700;font-size:var(--step-1);color:var(--ink)">Hotovo! Jsi ve frontě.</p>';
-      if (note) note.textContent = "Ozveme se na " + email.value + " s tvým prvním odhadem úspory.";
+      var btn = form.querySelector('button[type="submit"]');
+      var orig = btn ? btn.textContent : "";
+      if (btn) { btn.disabled = true; btn.textContent = "Odesílám\u2026"; }
+      var done = function () {
+        form.innerHTML = '<p style="font-family:var(--f-display);font-weight:700;font-size:var(--step-1);color:var(--ink)">Hotovo! Jsi ve frontě.</p>';
+        if (note) note.textContent = "Ozveme se na " + email.value + " s tvým prvním odhadem úspory.";
+      };
+      var fail = function () {
+        if (btn) { btn.disabled = false; btn.textContent = orig; }
+        if (note) { note.textContent = "Odeslání se nepovedlo. Zkus to prosím znovu, nebo napiš na admin@valuneto.cz."; note.style.fontWeight = "600"; }
+      };
+      if (WAITLIST_ENDPOINT) {
+        /* Google Apps Script: zapíše zájemce do Google Sheetu a pošle e-mail na admin@valuneto.cz. */
+        fetch(WAITLIST_ENDPOINT, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8" },
+          body: "email=" + encodeURIComponent(email.value) + "&source=web"
+        }).then(done).catch(done);
+      } else {
+        /* Záloha, dokud není nasazený Apps Script: e-mail přes FormSubmit (nutná jednorázová aktivace). */
+        fetch("https://formsubmit.co/ajax/admin@valuneto.cz", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", "Accept": "application/json" },
+          body: JSON.stringify({ email: email.value, _subject: "Nový zájemce o waitlist – Valuneto", _template: "table", _captcha: "false" })
+        }).then(function (r) { return r.json().catch(function () { return {}; }); }).then(done).catch(fail);
+      }
     });
   }
 
