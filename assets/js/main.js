@@ -99,7 +99,7 @@
   var form = document.getElementById("waitlistForm");
   if (form) {
     var note = document.getElementById("waitlistNote");
-    var WAITLIST_ENDPOINT = "https://script.google.com/macros/s/AKfycbwWzG7jhZzlUU6NhtmOeMMk_0Ebk__m-cLNFKv7VG_M-DQYZAN0Ejovp3N69ksTwjJc/exec"; // ← sem vlož URL nasazeného Google Apps Scriptu (…/exec). Prázdné = záloha přes FormSubmit (e-mail).
+    var WAITLIST_ENDPOINT = "https://script.google.com/macros/s/AKfycbzUE2Y-fP1U4bQ3X7ara63gPpkfUAmqSPUUumvz2BxMfVtQr7RyFXOJ8nv54jBdKDlz/exec"; // ← sem vlož URL nasazeného Google Apps Scriptu (…/exec). Prázdné = záloha přes FormSubmit (e-mail).
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       var email = document.getElementById("email");
