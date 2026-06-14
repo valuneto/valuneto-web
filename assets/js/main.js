@@ -51,6 +51,14 @@
   var fmt = new Intl.NumberFormat("cs-CZ");
   var czk = function (n) { return fmt.format(Math.round(n)) + " Kč"; };
 
+  /* poslední spočítaný odhad + zdroj kliknutí - použije se při odeslání waitlistu níže */
+  var lastCalcOverpay = null;
+  var leadSource = "web";
+  var calcCta = document.getElementById("calcCta");
+  if (calcCta) {
+    calcCta.addEventListener("click", function () { leadSource = "kalkulacka"; });
+  }
+
   var rngIncome = document.getElementById("rngIncome");
   var rngSpend = document.getElementById("rngSpend");
   var toggles = document.getElementById("toggles");
@@ -82,6 +90,7 @@
       spendVal.textContent = czk(spend);
       totalEl.textContent = czk(overpay);
       monthlyEl.textContent = czk(overpay / 12);
+      lastCalcOverpay = Math.round(overpay);
     };
 
     rngIncome.addEventListener("input", calc);
@@ -119,20 +128,25 @@
         if (btn) { btn.disabled = false; btn.textContent = orig; }
         if (note) { note.textContent = "Odeslání se nepovedlo. Zkus to prosím znovu, nebo napiš na admin@valuneto.cz."; note.style.fontWeight = "600"; }
       };
+      /* zdroj poptávky: "kalkulacka:18600" když přišel z kalkulačky (vč. odhadu), jinak "web" */
+      var source = leadSource === "kalkulacka" && lastCalcOverpay
+        ? "kalkulacka:" + lastCalcOverpay
+        : leadSource;
+
       if (WAITLIST_ENDPOINT) {
         /* Google Apps Script: zapíše zájemce do Google Sheetu a pošle e-mail na admin@valuneto.cz. */
         fetch(WAITLIST_ENDPOINT, {
           method: "POST",
           mode: "no-cors",
           headers: { "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8" },
-          body: "email=" + encodeURIComponent(email.value) + "&source=web"
+          body: "email=" + encodeURIComponent(email.value) + "&source=" + encodeURIComponent(source)
         }).then(done).catch(done);
       } else {
         /* Záloha, dokud není nasazený Apps Script: e-mail přes FormSubmit (nutná jednorázová aktivace). */
         fetch("https://formsubmit.co/ajax/admin@valuneto.cz", {
           method: "POST",
           headers: { "Content-Type": "application/json", "Accept": "application/json" },
-          body: JSON.stringify({ email: email.value, _subject: "Nový zájemce o waitlist – Valuneto", _template: "table", _captcha: "false" })
+          body: JSON.stringify({ email: email.value, source: source, _subject: "Nový zájemce o waitlist – Valuneto", _template: "table", _captcha: "false" })
         }).then(function (r) { return r.json().catch(function () { return {}; }); }).then(done).catch(fail);
       }
     });
@@ -180,4 +194,43 @@
       });
     }
   }
+})();
+
+/* ---------- cookie lišta (souhlas s Google Analytics) ---------- */
+(function () {
+  "use strict";
+  var KEY = "valuneto_consent";
+  var saved = null;
+  try { saved = localStorage.getItem(KEY); } catch (e) {}
+
+  var applyConsent = function (granted) {
+    if (typeof window.gtag === "function") {
+      window.gtag("consent", "update", { analytics_storage: granted ? "granted" : "denied" });
+    }
+  };
+
+  if (saved === "granted") { applyConsent(true); return; }
+  if (saved === "denied") { return; }
+
+  var bar = document.createElement("div");
+  bar.className = "cookie-bar";
+  bar.setAttribute("role", "dialog");
+  bar.setAttribute("aria-label", "Souhlas s cookies");
+  bar.innerHTML =
+    '<p>Pro měření návštěvnosti používáme Google Analytics. Souhlasíš s uložením cookies pro tento účel? Více v <a href="soukromi.html">zásadách ochrany soukromí</a>.</p>' +
+    '<div class="cookie-actions">' +
+      '<button type="button" class="btn btn-ghost" data-consent="deny">Jen nezbytné</button>' +
+      '<button type="button" class="btn btn-primary" data-consent="accept">Souhlasím</button>' +
+    "</div>";
+
+  document.body.appendChild(bar);
+
+  bar.addEventListener("click", function (e) {
+    var btn = e.target.closest("[data-consent]");
+    if (!btn) return;
+    var granted = btn.dataset.consent === "accept";
+    try { localStorage.setItem(KEY, granted ? "granted" : "denied"); } catch (err) {}
+    applyConsent(granted);
+    bar.remove();
+  });
 })();

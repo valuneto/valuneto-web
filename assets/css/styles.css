@@ -620,3 +620,28 @@ button.ap-hero, button.ap-networth, button.ap-r { width: 100%; text-align: left;
 .faq-q summary::after { content: "+"; flex: none; color: var(--net); font-weight: 700; font-size: 1.35em; line-height: 1; }
 .faq-q[open] summary::after { content: "–"; }
 .faq-q p { color: var(--slate-2); margin-top: .75rem; line-height: 1.6; }
+
+/* ---------- footer social ikony ---------- */
+.footer-social { display: flex; gap: 0.6rem; margin-top: 1.1rem; }
+.footer-social a {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 38px; height: 38px; border-radius: var(--radius-pill);
+  border: 1px solid var(--ink-line); color: var(--slate-2);
+  padding: 0; transition: color 0.18s var(--ease), border-color 0.18s var(--ease), transform 0.18s var(--ease);
+}
+.footer-social a:hover { color: var(--net); border-color: var(--net); transform: translateY(-2px); }
+.footer-social svg { width: 18px; height: 18px; }
+
+/* ---------- cookie lišta (souhlas s GA4) ---------- */
+.cookie-bar {
+  position: fixed; left: 1rem; right: 1rem; bottom: 1rem; z-index: 90;
+  max-width: 640px; margin: 0 auto;
+  background: var(--ink); color: var(--paper); border: 1px solid var(--ink-line);
+  border-radius: var(--radius-lg); padding: 1.1rem 1.3rem;
+  display: flex; flex-wrap: wrap; gap: 0.75rem 1.5rem; align-items: center; justify-content: space-between;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.35);
+}
+.cookie-bar p { margin: 0; flex: 1 1 220px; font-size: var(--step--1); color: var(--slate-2); }
+.cookie-bar p a { display: inline; color: var(--net); }
+.cookie-actions { display: flex; gap: 0.6rem; flex: none; }
+.cookie-bar .btn { padding: 0.6em 1.1em; font-size: var(--step--1); }

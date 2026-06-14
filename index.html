@@ -74,6 +74,15 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Geist+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/styles.css?v=2">
+<!-- Google Analytics 4 (Consent Mode v2 - výchozí odmítnuto, dokud uživatel nesouhlasí v cookie liště) -->
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('consent','default',{'ad_storage':'denied','ad_user_data':'denied','ad_personalization':'denied','analytics_storage':'denied'});
+gtag('js', new Date());
+gtag('config','G-EQP066N6QY',{'anonymize_ip':true});
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EQP066N6QY"></script>
 </head>
 <body>
 <a class="skip-link" href="#main">Přeskočit na obsah</a>
@@ -121,7 +130,7 @@
         <div class="phone" id="heroPhone">
           <span class="phone-badge">+23 700 Kč / rok</span>
           <div class="ph-frame">
-            <div class="ph-scr"><img class="ph-shot" src="assets/img/screen-prehled.png" alt="Aplikace Valuneto – přehled financí: čisté jmění 235 850 Kč a propojené účty (ČSOB, Air Bank, Portu) na jednom místě" loading="lazy"></div>
+            <div class="ph-scr"><picture><source srcset="assets/img/screen-prehled.webp" type="image/webp"><img class="ph-shot" src="assets/img/screen-prehled.png" alt="Aplikace Valuneto – přehled financí: čisté jmění 235 850 Kč a propojené účty (ČSOB, Air Bank, Portu) na jednom místě" loading="lazy"></picture></div>
           </div>
         </div>
       </div>
@@ -157,15 +166,15 @@
 
             <div class="app-row reveal" role="list" aria-label="Ukázky obrazovek aplikace Valuneto">
         <div class="ph" role="listitem">
-          <div class="ph-frame"><div class="ph-scr"><img class="ph-shot" src="assets/img/screen-prihlaseni.png" alt="Přihlášení do Valuneto: peníze pod kontrolou za 2 minuty, přes Google nebo Apple" loading="lazy"></div></div>
+          <div class="ph-frame"><div class="ph-scr"><picture><source srcset="assets/img/screen-prihlaseni.webp" type="image/webp"><img class="ph-shot" src="assets/img/screen-prihlaseni.png" alt="Přihlášení do Valuneto: peníze pod kontrolou za 2 minuty, přes Google nebo Apple" loading="lazy"></picture></div></div>
           <p class="ph-cap">Začni za 2 minuty<small>Přihlas se přes Google nebo Apple</small></p>
         </div>
         <div class="ph" role="listitem">
-          <div class="ph-frame"><div class="ph-scr"><img class="ph-shot" src="assets/img/screen-tarif.png" alt="Doporučení Valuneto: mobilní tarif z 749 Kč na 519 Kč, roční úspora 2 760 Kč" loading="lazy"></div></div>
+          <div class="ph-frame"><div class="ph-scr"><picture><source srcset="assets/img/screen-tarif.webp" type="image/webp"><img class="ph-shot" src="assets/img/screen-tarif.png" alt="Doporučení Valuneto: mobilní tarif z 749 Kč na 519 Kč, roční úspora 2 760 Kč" loading="lazy"></picture></div></div>
           <p class="ph-cap">Úspora na míru<small>Stejné pokrytí i číslo, nižší cena</small></p>
         </div>
         <div class="ph" role="listitem">
-          <div class="ph-frame"><div class="ph-scr"><img class="ph-shot" src="assets/img/screen-uniky.png" alt="Únik peněz ve Valuneto: −11 520 Kč ročně napříč energiemi, pojištěním a poplatky" loading="lazy"></div></div>
+          <div class="ph-frame"><div class="ph-scr"><picture><source srcset="assets/img/screen-uniky.webp" type="image/webp"><img class="ph-shot" src="assets/img/screen-uniky.png" alt="Únik peněz ve Valuneto: −11 520 Kč ročně napříč energiemi, pojištěním a poplatky" loading="lazy"></picture></div></div>
           <p class="ph-cap">Vidíš, kde utíkají<small>Všechny přeplatky na jednom místě</small></p>
         </div>
       </div>
@@ -242,7 +251,7 @@
           <p class="label">Odhadem ročně přeplácíš</p>
           <p class="total num" id="calcTotal" aria-live="polite">18 600 Kč</p>
           <p class="sub" id="calcSub">To je <span id="calcMonthly">1 550 Kč</span> každý měsíc, co ti zbytečně utíká.</p>
-          <a href="#stahnout" class="btn btn-primary">Najít moje přeplatky</a>
+          <a href="#stahnout" class="btn btn-primary" id="calcCta">Najít moje přeplatky</a>
         </div>
       </div>
     </div>
@@ -376,6 +385,10 @@
       <div class="footer-brand">
         <a href="index.html" class="brand" aria-label="Valuneto, domů"><svg class="brand-mark" viewBox="22 30 176 160" width="18" height="16" aria-hidden="true" focusable="false" style="display:inline-block;height:0.82em;width:auto;vertical-align:-0.09em;margin-right:0.3em;flex:none"><polyline points="41.8,90.9 107.3,164.6 178.2,50.0" fill="none" stroke="#00C46A" stroke-width="28.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="brand-wm">Valu<span class="neto">neto</span></span></a>
         <p>Tvoje peníze přehledně na jednom místě.</p>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/valunetoapp/" target="_blank" rel="noopener" aria-label="Valuneto na Instagramu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/></svg></a>
+          <a href="https://www.linkedin.com/company/valuneto/" target="_blank" rel="noopener" aria-label="Valuneto na LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="2"/><line x1="8" y1="11" x2="8" y2="16"/><line x1="8" y1="8" x2="8" y2="8.01"/><path d="M12 16v-3.5a2 2 0 0 1 4 0V16"/><line x1="12" y1="16" x2="12" y2="11"/></svg></a>
+        </div>
       </div>
       <div>
         <h4>Produkt</h4>
@@ -393,6 +406,7 @@
       <div>
         <h4>Kontakt</h4>
         <a href="mailto:admin@valuneto.cz">admin@valuneto.cz</a>
+        <a href="investors.html">Pro investory</a>
       </div>
     </div>
     <div class="footer-bottom">
@@ -402,6 +416,6 @@
   </div>
 </footer>
 
-<script src="assets/js/main.js?v=6" defer></script>
+<script src="assets/js/main.js?v=7" defer></script>
 </body>
 </html>
