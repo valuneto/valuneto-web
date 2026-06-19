@@ -35,6 +35,22 @@ gtag('config','G-EQP066N6QY',{'anonymize_ip':true});
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-EQP066N6QY"></script>
 <!-- GoatCounter (cookieless, bez souhlasu - meri vsechny navstevniky, GDPR/ePrivacy OK) -->
 <script data-goatcounter="https://valuneto.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<style>
+  /* Pitch deck modaly (jen na této stránce) */
+  .vn-modal[hidden]{display:none}
+  .vn-modal{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;padding:1rem}
+  .vn-modal-backdrop{position:absolute;inset:0;background:rgba(12,20,15,.55)}
+  .vn-modal-card{position:relative;background:#fff;border-radius:18px;max-width:430px;width:100%;padding:clamp(1.5rem,4vw,2.2rem);box-shadow:0 30px 80px rgba(0,0,0,.35)}
+  .vn-modal-x{position:absolute;top:10px;right:14px;background:none;border:0;font-size:26px;line-height:1;color:#6B756E;cursor:pointer;padding:4px}
+  .vn-modal-card h3{font-family:var(--f-display);color:#0C140F;font-size:1.45rem;line-height:1.2;margin:0 2rem .4rem 0}
+  .vn-modal-sub{color:#556258;font-size:.95rem;line-height:1.5;margin:0 0 1.2rem}
+  .vn-field{display:block;font-size:.82rem;font-weight:600;color:#0C140F;margin-bottom:.85rem;letter-spacing:.2px}
+  .vn-field input,.vn-field textarea{display:block;width:100%;margin-top:.35rem;padding:.72rem .85rem;border:1px solid #d8ddd7;border-radius:11px;font:inherit;font-weight:400;color:#0C140F;background:#fff}
+  .vn-field textarea{resize:vertical;min-height:72px}
+  .vn-field input:focus,.vn-field textarea:focus{outline:none;border-color:#00C46A;box-shadow:0 0 0 3px rgba(0,196,106,.18)}
+  .vn-modal .btn-primary{width:100%;margin-top:.4rem}
+  .vn-note{font-size:.86rem;line-height:1.4;margin:.85rem 0 0;min-height:1em}
+</style>
 </head>
 <body>
 <a class="skip-link" href="#main">Přeskočit na obsah</a>
@@ -109,13 +125,14 @@ gtag('config','G-EQP066N6QY',{'anonymize_ip':true});
     </div>
   </section>
 
-  <section class="section" style="padding-top:0">
+  <section class="section">
     <div class="wrap">
       <div class="cta-block reveal">
         <h2>Otevíráme seed round.</h2>
         <p>Napiš nám a pošleme úvodní pitch deck. Detailní finanční model, podmínky kola a stav bankovního partnerství probereme na callu.</p>
-        <div class="hero-actions" style="justify-content:center">
-          <a href="mailto:admin@valuneto.cz?subject=Pitch%20deck%20Valuneto" class="btn btn-primary">Vyžádat pitch deck</a>
+        <div class="hero-actions" style="justify-content:center;flex-wrap:wrap">
+          <button type="button" class="btn btn-primary" data-open="pitchRequest">Vyžádat pitch deck</button>
+          <button type="button" class="btn btn-primary" data-open="pitchDownload">Stáhnout pitch deck</button>
         </div>
       </div>
     </div>
@@ -143,6 +160,87 @@ gtag('config','G-EQP066N6QY',{'anonymize_ip':true});
     </div>
   </div>
 </footer>
+
+<!-- Pitch deck modaly -->
+<div class="vn-modal" id="pitchRequest" hidden>
+  <div class="vn-modal-backdrop" data-close></div>
+  <div class="vn-modal-card" role="dialog" aria-modal="true" aria-labelledby="pitchRequestTitle">
+    <button class="vn-modal-x" type="button" data-close aria-label="Zavřít">&times;</button>
+    <h3 id="pitchRequestTitle">Vyžádat pitch deck</h3>
+    <p class="vn-modal-sub">Napiš nám pár řádků a ozveme se ti s pitch deckem.</p>
+    <form id="pitchForm" novalidate>
+      <label class="vn-field">Jméno<input type="text" name="name" autocomplete="name" required></label>
+      <label class="vn-field">E-mail<input type="email" name="email" autocomplete="email" required></label>
+      <label class="vn-field">Telefon<input type="tel" name="phone" autocomplete="tel"></label>
+      <label class="vn-field">Zpráva<textarea name="message" rows="3"></textarea></label>
+      <button type="submit" class="btn btn-primary">Odeslat</button>
+      <p class="vn-note" id="pitchNote"></p>
+    </form>
+  </div>
+</div>
+
+<div class="vn-modal" id="pitchDownload" hidden>
+  <div class="vn-modal-backdrop" data-close></div>
+  <div class="vn-modal-card" role="dialog" aria-modal="true" aria-labelledby="pitchDownloadTitle">
+    <button class="vn-modal-x" type="button" data-close aria-label="Zavřít">&times;</button>
+    <h3 id="pitchDownloadTitle">Stáhnout pitch deck</h3>
+    <p class="vn-modal-sub">Zadej heslo pro stažení kompletního pitch decku.</p>
+    <form id="pitchDlForm" novalidate>
+      <label class="vn-field">Heslo<input type="password" name="pwd" autocomplete="off" required></label>
+      <button type="submit" class="btn btn-primary">Stáhnout</button>
+      <p class="vn-note" id="pitchDlNote"></p>
+    </form>
+  </div>
+</div>
+
+<script>
+(function () {
+  /* ===== NASTAVENÍ ===== */
+  var ENDPOINT      = "https://script.google.com/macros/s/AKfycbw440E6pFYm04N8u3tZw8Ag0OPUkxT_iLGUoWa9Wfn_70URQd90WgUN7EOiAfNpEVjsXA/exec";
+  var DECK_PASSWORD = "ZMENME-HESLO";                    // <-- ZMĚŇ SI HESLO pro stažení pitch decku
+  var DECK_FILE     = "assets/Valuneto_Pitch_Deck.pdf";  // <-- sem nahraj PDF přesně s tímhle názvem
+  /* ===================== */
+
+  function openM(id){ var m=document.getElementById(id); if(!m) return; m.hidden=false; var f=m.querySelector('input'); if(f){ setTimeout(function(){ f.focus(); },40); } document.addEventListener('keydown', esc); }
+  function closeM(m){ if(!m) return; m.hidden=true; document.removeEventListener('keydown', esc); }
+  function esc(ev){ if(ev.key==='Escape'){ var o=document.querySelector('.vn-modal:not([hidden])'); if(o) closeM(o); } }
+
+  Array.prototype.forEach.call(document.querySelectorAll('[data-open]'), function(b){ b.addEventListener('click', function(){ openM(b.getAttribute('data-open')); }); });
+  Array.prototype.forEach.call(document.querySelectorAll('.vn-modal [data-close]'), function(b){ b.addEventListener('click', function(){ closeM(b.closest('.vn-modal')); }); });
+
+  /* Vyžádat pitch deck -> e-mail adminovi přes Apps Script */
+  var pf = document.getElementById('pitchForm');
+  if (pf) { pf.addEventListener('submit', function(e){
+    e.preventDefault();
+    var note = document.getElementById('pitchNote');
+    var fd = new FormData(pf);
+    var name = (fd.get('name')||'').trim(), email = (fd.get('email')||'').trim();
+    var emailEl = pf.querySelector('input[name="email"]');
+    if (!name || !email || !emailEl.checkValidity()) { if (note) { note.style.color='#E5483A'; note.textContent='Vyplň prosím jméno a platný e-mail.'; } return; }
+    var btn = pf.querySelector('button[type="submit"]'); if (btn) { btn.disabled = true; btn.textContent = 'Odesílám…'; }
+    var body = 'type=pitch&name=' + encodeURIComponent(name) + '&email=' + encodeURIComponent(email)
+             + '&phone=' + encodeURIComponent((fd.get('phone')||'').trim())
+             + '&message=' + encodeURIComponent((fd.get('message')||'').trim());
+    fetch(ENDPOINT, { method:'POST', mode:'no-cors', headers:{'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8'}, body:body }).then(done).catch(done);
+    function done(){ pf.innerHTML = '<p style="font-family:var(--f-display);font-weight:700;font-size:1.15rem;color:#0C140F;margin:0">Díky! Ozveme se ti s pitch deckem.</p>'; }
+  }); }
+
+  /* Stáhnout pitch deck -> heslová brána */
+  var df = document.getElementById('pitchDlForm');
+  if (df) { df.addEventListener('submit', function(e){
+    e.preventDefault();
+    var note = document.getElementById('pitchDlNote');
+    var inp = df.querySelector('input[name="pwd"]');
+    if (inp.value === DECK_PASSWORD) {
+      if (note) { note.style.color='#0A7F52'; note.textContent='Heslo OK, stahuji…'; }
+      var a = document.createElement('a'); a.href = DECK_FILE; a.setAttribute('download',''); document.body.appendChild(a); a.click(); a.remove();
+    } else {
+      if (note) { note.style.color='#E5483A'; note.textContent='Špatné heslo. Zkus to prosím znovu.'; }
+      inp.select();
+    }
+  }); }
+})();
+</script>
 
 <script src="assets/js/main.js?v=7" defer></script>
 </body>
