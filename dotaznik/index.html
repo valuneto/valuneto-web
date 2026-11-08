@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<base target="_top">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dotazník · Valuneto</title>
+<meta name="description" content="Krátký dotazník o tom, jak lidé ve věku 20 až 35 let řeší peníze. Zabere asi 9 minut.">
+<meta name="robots" content="noindex">
+<script data-goatcounter="https://valuneto.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<meta property="og:title" content="Jak řešíš peníze? · Valuneto">
+<meta property="og:description" content="Krátký dotazník, asi 9 minut. Pomůžeš nám postavit finance bez papírů a telefonátů.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F6F8F4;--ink:#0C140F;--muted:#5A6560;--green:#00C46A;--green-d:#00A85A;--dot:#20D67E;--line:rgba(12,20,15,.08);--line2:rgba(12,20,15,.18);--err:#B4351B}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:'IBM Plex Sans',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
+.wrap{max-width:640px;margin:0 auto;padding:0 20px}
+.top{padding:22px 0 6px}
+.logo svg{height:26px;width:auto;display:block}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--green-d)}
+.eyebrow::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--dot)}
+h1.title{font-size:30px;line-height:1.08;letter-spacing:-.035em;font-weight:700;margin:10px 0 16px}
+.lead{color:var(--muted);font-size:17px;margin:0 0 18px}
+.meta{color:var(--muted);font-size:14px;margin:0 0 22px}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:24px;margin:14px 0}
+.q{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px;margin:0 0 14px;transition:border-color .15s}
+.q.bad{border-color:var(--err)}
+.q fieldset{border:0;margin:0;padding:0;min-width:0}
+.q-text{display:block;font-weight:600;font-size:17px;line-height:1.35;margin:0 0 4px;padding:0}
+.q-opt{color:var(--muted);font-weight:400;font-size:14px}
+.q-help{color:var(--muted);font-size:14px;margin:0 0 10px}
+.opt{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border:1px solid var(--line);border-radius:12px;margin-top:8px;cursor:pointer;transition:border-color .15s,background .15s;user-select:none}
+.opt input{margin:3px 0 0;width:18px;height:18px;accent-color:var(--green-d);flex:none;cursor:pointer}
+.opt.sel{border-color:var(--green);background:rgba(0,196,106,.07)}
+.opt.dis{opacity:.45;cursor:not-allowed}
+.opt.dis input{cursor:not-allowed}
+input[type=text],input[type=number],input[type=email],textarea{width:100%;font:inherit;color:var(--ink);padding:12px 14px;border:1px solid var(--line2);border-radius:12px;background:#fff;-webkit-appearance:none;appearance:none}
+textarea{min-height:96px;resize:vertical}
+input:focus,textarea:focus{outline:2px solid var(--green);outline-offset:1px;border-color:transparent}
+.opt:focus-within{outline:2px solid var(--green);outline-offset:1px}
+.other{margin-top:8px}
+.scale{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:8px}
+.scale button{font:inherit;font-weight:600;font-size:17px;padding:13px 0;border:1px solid var(--line2);border-radius:12px;background:#fff;color:var(--ink);cursor:pointer}
+.scale button:focus-visible{outline:2px solid var(--green);outline-offset:2px}
+.scale button[aria-checked="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.scale-l{display:flex;justify-content:space-between;color:var(--muted);font-size:13px;margin-top:6px}
+.info{background:var(--ink);color:#fff;border-radius:14px;padding:22px;margin:0 0 14px;font-size:16px;line-height:1.6}
+.info .eyebrow{color:var(--dot);margin-bottom:8px}
+.err{color:var(--err);font-size:14px;margin-top:8px}
+.counter{color:var(--muted);font-size:13px;margin-top:8px}
+.progress{margin:8px 0 2px}
+.progress .row{display:flex;justify-content:space-between;align-items:center}
+.progress .step{color:var(--muted);font-size:13px}
+.bar{height:6px;background:var(--line);border-radius:99px;overflow:hidden;margin-top:10px}
+.bar i{display:block;height:100%;background:var(--green);border-radius:99px;transition:width .35s}
+.nav{display:flex;gap:10px;align-items:center;margin:20px 0 6px}
+.btn{font:inherit;font-weight:600;font-size:16px;border-radius:12px;padding:14px 24px;border:1px solid transparent;cursor:pointer}
+.btn.primary{background:var(--ink);color:#fff;margin-left:auto}
+.btn.primary:hover{background:#1d2b22}
+.btn.ghost{background:transparent;border-color:var(--line2);color:var(--ink)}
+.btn:disabled{opacity:.55;cursor:default}
+.btn:focus-visible{outline:2px solid var(--green);outline-offset:2px}
+.banner{background:#FDECE8;color:var(--err);border-radius:12px;padding:12px 14px;font-size:14px;margin-top:12px}
+.done{text-align:center;padding:44px 24px}
+.done .check{width:60px;height:60px;border-radius:50%;background:var(--green);display:inline-flex;align-items:center;justify-content:center;margin-bottom:14px}
+.foot{color:var(--muted);font-size:12px;padding:26px 20px 44px}
+.hp{position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;opacity:0}
+.consent{display:flex;gap:12px;align-items:flex-start;cursor:pointer}
+.consent input{margin:3px 0 0;width:18px;height:18px;accent-color:var(--green-d);flex:none}
+@media (max-width:480px){h1.title{font-size:25px}.q{padding:16px}.card{padding:20px}.btn{padding:14px 18px}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap"><a class="logo" href="/" aria-label="Valuneto"><svg role="img" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 678 213">
+<polyline points="41.8,90.9 107.3,164.6 178.2,50.0" fill="none" stroke="#00C46A" stroke-width="28.6" stroke-linecap="round" stroke-linejoin="round" transform="translate(29.68,54.31) scale(0.5936)"/>
+<path d="M239.0 0.0 14.0 698.0H168.0L272.0 363.0L327.0 144.0H330.0L383.0 363.0L487.0 698.0H636.0L409.0 0.0Z M1077.0 0.0Q1037.0 0.0 1010.5 25.0Q984.0 50.0 977.0 92.0H971.0Q959.0 41.0 918.0 14.5Q877.0 -12.0 817.0 -12.0Q738.0 -12.0 696.0 30.0Q654.0 72.0 654.0 141.0Q654.0 224.0 714.5 264.5Q775.0 305.0 879.0 305.0H962.0V338.0Q962.0 376.0 942.0 398.5Q922.0 421.0 875.0 421.0Q831.0 421.0 805.0 402.0Q779.0 383.0 762.0 359.0L674.0 437.0Q706.0 484.0 754.5 510.5Q803.0 537.0 886.0 537.0Q998.0 537.0 1054.0 488.0Q1110.0 439.0 1110.0 345.0V115.0H1159.0V0.0ZM872.0 91.0Q909.0 91.0 935.5 107.0Q962.0 123.0 962.0 159.0V221.0H890.0Q803.0 221.0 803.0 162.0V147.0Q803.0 118.0 821.0 104.5Q839.0 91.0 872.0 91.0Z M1375.0 0.0Q1299.0 0.0 1263.5 37.0Q1228.0 74.0 1228.0 144.0V740.0H1376.0V115.0H1442.0V0.0Z M1811.0 88.0H1806.0Q1799.0 68.0 1787.5 50.0Q1776.0 32.0 1758.0 18.0Q1740.0 4.0 1715.5 -4.0Q1691.0 -12.0 1659.0 -12.0Q1578.0 -12.0 1536.5 41.5Q1495.0 95.0 1495.0 195.0V525.0H1643.0V208.0Q1643.0 160.0 1660.0 134.0Q1677.0 108.0 1718.0 108.0Q1735.0 108.0 1752.0 113.0Q1769.0 118.0 1782.0 127.5Q1795.0 137.0 1803.0 151.0Q1811.0 165.0 1811.0 184.0V525.0H1959.0V0.0H1811.0Z" fill="#0C140F" transform="translate(180.35,157.6) scale(0.11347,-0.11347)"/>
+<path d="M2067.0 0.0V525.0H2215.0V436.0H2221.0Q2235.0 477.0 2270.0 507.0Q2305.0 537.0 2367.0 537.0Q2448.0 537.0 2489.5 483.0Q2531.0 429.0 2531.0 329.0V0.0H2383.0V317.0Q2383.0 368.0 2367.0 392.5Q2351.0 417.0 2310.0 417.0Q2292.0 417.0 2275.0 412.5Q2258.0 408.0 2244.5 398.0Q2231.0 388.0 2223.0 373.5Q2215.0 359.0 2215.0 340.0V0.0Z M2852.0 -12.0Q2792.0 -12.0 2745.0 7.5Q2698.0 27.0 2665.5 62.5Q2633.0 98.0 2616.5 149.0Q2600.0 200.0 2600.0 263.0Q2600.0 325.0 2616.0 375.5Q2632.0 426.0 2663.5 462.0Q2695.0 498.0 2741.0 517.5Q2787.0 537.0 2846.0 537.0Q2911.0 537.0 2957.5 515.0Q3004.0 493.0 3033.5 456.0Q3063.0 419.0 3076.5 370.5Q3090.0 322.0 3090.0 269.0V225.0H2753.0V217.0Q2753.0 165.0 2781.0 134.5Q2809.0 104.0 2869.0 104.0Q2915.0 104.0 2944.0 122.5Q2973.0 141.0 2998.0 167.0L3072.0 75.0Q3037.0 34.0 2980.5 11.0Q2924.0 -12.0 2852.0 -12.0ZM2849.0 428.0Q2804.0 428.0 2778.5 398.5Q2753.0 369.0 2753.0 320.0V312.0H2937.0V321.0Q2937.0 369.0 2915.5 398.5Q2894.0 428.0 2849.0 428.0Z M3349.0 0.0Q3272.0 0.0 3232.5 39.0Q3193.0 78.0 3193.0 153.0V410.0H3119.0V525.0H3156.0Q3186.0 525.0 3197.0 539.5Q3208.0 554.0 3208.0 581.0V667.0H3341.0V525.0H3445.0V410.0H3341.0V115.0H3437.0V0.0Z M3731.0 -12.0Q3673.0 -12.0 3627.5 7.0Q3582.0 26.0 3550.5 62.0Q3519.0 98.0 3502.0 149.0Q3485.0 200.0 3485.0 263.0Q3485.0 326.0 3502.0 377.0Q3519.0 428.0 3550.5 463.5Q3582.0 499.0 3627.5 518.0Q3673.0 537.0 3731.0 537.0Q3789.0 537.0 3834.5 518.0Q3880.0 499.0 3911.5 463.5Q3943.0 428.0 3960.0 377.0Q3977.0 326.0 3977.0 263.0Q3977.0 200.0 3960.0 149.0Q3943.0 98.0 3911.5 62.0Q3880.0 26.0 3834.5 7.0Q3789.0 -12.0 3731.0 -12.0ZM3731.0 105.0Q3775.0 105.0 3799.0 132.0Q3823.0 159.0 3823.0 209.0V316.0Q3823.0 366.0 3799.0 393.0Q3775.0 420.0 3731.0 420.0Q3687.0 420.0 3663.0 393.0Q3639.0 366.0 3639.0 316.0V209.0Q3639.0 159.0 3663.0 132.0Q3687.0 105.0 3731.0 105.0Z" fill="#00C46A" transform="translate(180.35,157.6) scale(0.11347,-0.11347)"/>
+</svg></a></div></header>
+<main class="wrap" id="app" aria-live="polite"></main>
+<footer class="wrap foot">Odpovědi zpracovává Valuneto s.r.o. jen pro účely výzkumu.</footer>
+<input class="hp" id="hp" name="web" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">
+<script>
+function valunetoSurvey(S, send) {
+  'use strict';
+  S = S || {};
+  var sections = S.sections || [];
+  var TOTAL = sections.length;
+  var app = document.getElementById('app');
+  var state = { page: 0, answers: {}, order: {}, startedAt: null, finished: false };
+  var byId = {};
+  sections.forEach(function (s) { s.items.forEach(function (it) { byId[it.id] = it; }); });
+
+  /* ---------- pomocné ---------- */
+  function el(tag, attrs, kids) {
+    var n = document.createElement(tag);
+    if (attrs) Object.keys(attrs).forEach(function (k) {
+      var v = attrs[k];
+      if (v == null || v === false) return;
+      if (k === 'class') n.className = v;
+      else if (k === 'text') n.textContent = v;
+      else if (k.indexOf('on') === 0) n.addEventListener(k.slice(2), v);
+      else n.setAttribute(k, v === true ? '' : v);
+    });
+    (kids || []).forEach(function (c) { if (c) n.appendChild(typeof c === 'string' ? document.createTextNode(c) : c); });
+    return n;
+  }
+  function norm(s) { return String(s == null ? '' : s).trim().toLowerCase().replace(/\s+/g, ' '); }
+  function answered(v) {
+    if (Array.isArray(v)) return v.length > 0;
+    if (v === true) return true;
+    if (v === false) return false;
+    return v != null && String(v).trim() !== '';
+  }
+  function condOk(item) {
+    var c = item.cond;
+    if (!c || c.error || !c.ref) return true;
+    var v = state.answers[c.ref];
+    if (c.op === 'filled') return answered(v);
+    if (!answered(v)) return false;
+    var has = Array.isArray(v)
+      ? v.some(function (x) { return norm(x) === norm(c.value); })
+      : norm(v) === norm(c.value);
+    return c.op === 'eq' ? has : !has;
+  }
+  function order(item) {
+    if (state.order[item.id]) return state.order[item.id];
+    var idx = item.options.map(function (_, i) { return i; });
+    for (var i = (item.shuffle || 0) - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var t = idx[i]; idx[i] = idx[j]; idx[j] = t;
+    }
+    state.order[item.id] = idx;
+    return idx;
+  }
+  function setAnswer(id, v) { if (answered(v)) state.answers[id] = v; else delete state.answers[id]; }
+
+  /* ---------- otázky ---------- */
+  function renderItem(item) {
+    if (item.type === 'info') {
+      return el('div', { class: 'info', id: 'it-' + item.id }, [item.help ? el('div', { class: 'eyebrow', text: item.help }) : null, el('div', { text: item.text })]);
+    }
+    var box = el('div', { class: 'q', id: 'it-' + item.id });
+    var inputId = 'in-' + item.id;
+    var optTag = item.required ? null : el('span', { class: 'q-opt', text: ' (nepovinné)' });
+    var grouped = item.type === 'jedna' || item.type === 'vice' || item.type === 'skala';
+    var wrap = grouped ? el('fieldset') : box;
+    var title = grouped
+      ? el('legend', { class: 'q-text' }, [item.text, optTag])
+      : (item.type === 'souhlas' ? null : el('label', { class: 'q-text', for: inputId }, [item.text, optTag]));
+    if (title) wrap.appendChild(title);
+    if (item.help) wrap.appendChild(el('p', { class: 'q-help', text: item.help }));
+    var ctrl;
+    if (item.type === 'text' || item.type === 'cislo') ctrl = renderInput(item, inputId);
+    else if (item.type === 'dlouhy_text') ctrl = renderTextarea(item, inputId);
+    else if (item.type === 'jedna' || item.type === 'vice') ctrl = renderChoices(item);
+    else if (item.type === 'skala') ctrl = renderScale(item);
+    else if (item.type === 'souhlas') ctrl = renderConsent(item, inputId);
+    if (ctrl) wrap.appendChild(ctrl);
+    if (grouped) box.appendChild(wrap);
+    box.appendChild(el('div', { class: 'err', id: 'err-' + item.id, role: 'alert', hidden: true }));
+    return box;
+  }
+
+  function renderInput(item, inputId) {
+    var isNum = item.type === 'cislo';
+    var inp = el('input', {
+      id: inputId, type: isNum ? 'number' : 'text', inputmode: isNum ? 'numeric' : null,
+      min: isNum ? '1' : null, max: isNum ? '120' : null, step: isNum ? '1' : null,
+      maxlength: isNum ? null : '300', autocomplete: 'off'
+    });
+    inp.value = state.answers[item.id] != null ? state.answers[item.id] : '';
+    inp.addEventListener('input', function () { setAnswer(item.id, inp.value.trim()); clearErr(item); refresh(); });
+    inp.addEventListener('keydown', function (e) { if (e.key === 'Enter') e.preventDefault(); });
+    return inp;
+  }
+
+  function renderTextarea(item, inputId) {
+    var ta = el('textarea', { id: inputId, maxlength: '2000', rows: '3' });
+    ta.value = state.answers[item.id] || '';
+    ta.addEventListener('input', function () { setAnswer(item.id, ta.value.trim()); clearErr(item); refresh(); });
+    return ta;
+  }
+
+  function renderChoices(item) {
+    var multi = item.type === 'vice';
+    var list = el('div', { class: 'opts' });
+    var otherKey = item.id + '_jine';
+    var otherInput = el('input', { type: 'text', class: 'other', maxlength: '300', placeholder: 'Napiš, co přesně', 'aria-label': 'Upřesnění k možnosti Jiné' });
+    otherInput.value = state.answers[otherKey] || '';
+    otherInput.addEventListener('input', function () { setAnswer(otherKey, otherInput.value.trim()); });
+    var counter = multi && item.max ? el('div', { class: 'counter' }) : null;
+    var rows = [];
+    order(item).forEach(function (i) {
+      var o = item.options[i];
+      var inp = el('input', { type: multi ? 'checkbox' : 'radio', name: 'q-' + item.id, value: o.label });
+      var row = el('label', { class: 'opt' }, [inp, el('span', { text: o.label })]);
+      rows.push({ o: o, inp: inp, row: row });
+      inp.addEventListener('change', function () { onChoice(item, o, inp.checked, rows, otherInput, otherKey, counter); });
+      list.appendChild(row);
+    });
+    // obnova stavu po návratu na stránku
+    var cur = state.answers[item.id];
+    rows.forEach(function (r) {
+      r.inp.checked = multi ? (Array.isArray(cur) && cur.indexOf(r.o.label) >= 0) : cur === r.o.label;
+    });
+    list.appendChild(otherInput);
+    if (counter) list.appendChild(counter);
+    syncChoices(item, rows, otherInput, otherKey, counter);
+    return list;
+  }
+
+  function onChoice(item, o, checked, rows, otherInput, otherKey, counter) {
+    if (item.type === 'vice' && checked) {
+      rows.forEach(function (r) {
+        if (r.o === o) return;
+        if (o.exclusive || r.o.exclusive) r.inp.checked = false;
+      });
+    }
+    var picked = rows.filter(function (r) { return r.inp.checked; });
+    if (item.type === 'vice') {
+      var labels = item.options.filter(function (opt) { return picked.some(function (r) { return r.o === opt; }); }).map(function (opt) { return opt.label; });
+      setAnswer(item.id, labels);
+    } else {
+      setAnswer(item.id, picked.length ? picked[0].o.label : '');
+    }
+    syncChoices(item, rows, otherInput, otherKey, counter);
+    clearErr(item);
+    refresh();
+  }
+
+  function syncChoices(item, rows, otherInput, otherKey, counter) {
+    var picked = rows.filter(function (r) { return r.inp.checked; });
+    var regular = picked.filter(function (r) { return !r.o.exclusive; }).length;
+    var full = item.type === 'vice' && item.max > 0 && regular >= item.max;
+    rows.forEach(function (r) {
+      r.row.classList.toggle('sel', r.inp.checked);
+      var dis = full && !r.inp.checked && !r.o.exclusive;
+      r.inp.disabled = dis;
+      r.row.classList.toggle('dis', dis);
+    });
+    var otherOn = picked.some(function (r) { return r.o.other; });
+    otherInput.hidden = !otherOn;
+    if (!otherOn) { otherInput.value = ''; setAnswer(otherKey, ''); }
+    if (counter) counter.textContent = 'Vybráno ' + regular + ' z ' + item.max;
+  }
+
+  function renderScale(item) {
+    var wrap = el('div');
+    var grid = el('div', { class: 'scale', role: 'radiogroup' });
+    var btns = [];
+    for (var n = 1; n <= 5; n++) (function (n) {
+      var b = el('button', { type: 'button', role: 'radio', 'aria-checked': String(state.answers[item.id] === n), 'aria-label': String(n), text: String(n) });
+      b.addEventListener('click', function () {
+        setAnswer(item.id, n);
+        btns.forEach(function (x, i) { x.setAttribute('aria-checked', String(i + 1 === n)); });
+        clearErr(item);
+        refresh();
+      });
+      btns.push(b);
+      grid.appendChild(b);
+    })(n);
+    wrap.appendChild(grid);
+    var lo = item.options[0] ? item.options[0].label : '';
+    var hi = item.options[1] ? item.options[1].label : '';
+    if (lo || hi) wrap.appendChild(el('div', { class: 'scale-l' }, [el('span', { text: '1 = ' + lo }), el('span', { text: '5 = ' + hi })]));
+    return wrap;
+  }
+
+  function renderConsent(item, inputId) {
+    var inp = el('input', { type: 'checkbox', id: inputId });
+    inp.checked = state.answers[item.id] === true;
+    inp.addEventListener('change', function () { setAnswer(item.id, inp.checked ? true : ''); clearErr(item); });
+    return el('label', { class: 'consent', for: inputId }, [inp, el('span', { text: item.text })]);
+  }
+
+  /* ---------- podmínky a validace ---------- */
+  function refresh() {
+    var sec = sections[state.page - 1];
+    if (!sec) return;
+    for (var pass = 0; pass < 5; pass++) {
+      var changed = false;
+      sec.items.forEach(function (item) {
+        var node = document.getElementById('it-' + item.id);
+        if (!node) return;
+        var vis = condOk(item);
+        if (vis === !node.hidden) return;
+        if (!vis) {
+          delete state.answers[item.id];
+          delete state.answers[item.id + '_jine'];
+          var fresh = renderItem(item);
+          fresh.hidden = true;
+          node.parentNode.replaceChild(fresh, node);
+        } else {
+          node.hidden = false;
+        }
+        changed = true;
+      });
+      if (!changed) break;
+    }
+  }
+
+  function setErr(item, msg) {
+    var box = document.getElementById('it-' + item.id);
+    var e = document.getElementById('err-' + item.id);
+    if (!box || !e) return;
+    box.classList.toggle('bad', !!msg);
+    e.textContent = msg || '';
+    e.hidden = !msg;
+  }
+  function clearErr(item) { setErr(item, ''); }
+
+  function validate(sec) {
+    var first = null;
+    sec.items.forEach(function (item) {
+      if (item.type === 'info') return;
+      var node = document.getElementById('it-' + item.id);
+      if (!node || node.hidden) return;
+      var v = state.answers[item.id];
+      var msg = '';
+      if (item.required && !answered(v)) {
+        msg = item.type === 'souhlas'
+          ? 'Bez souhlasu tě nemůžeme kontaktovat. Zaškrtni ho, nebo kontakt výše smaž.'
+          : 'Tohle prosím vyplň.';
+      }
+      if (!msg && item.type === 'cislo' && answered(v)) {
+        var n = Number(v);
+        if (!(n >= 1 && n <= 120 && Math.floor(n) === n)) msg = 'Zadej prosím celé číslo.';
+      }
+      setErr(item, msg);
+      if (msg && !first) first = node;
+    });
+    if (first) {
+      first.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return false;
+    }
+    return true;
+  }
+
+  /* ---------- stránky ---------- */
+  function clear() { while (app.firstChild) app.removeChild(app.firstChild); }
+  function go(p) { state.page = p; render(); window.scrollTo(0, 0); }
+
+  function render() {
+    clear();
+    if (S.error) {
+      app.appendChild(el('div', { class: 'card' }, [el('h1', { class: 'title', text: 'Omlouváme se' }), el('p', { class: 'lead', text: S.error })]));
+      return;
+    }
+    if (state.page === 0) return renderIntro();
+    if (state.page > TOTAL) return renderDone();
+    renderSection(state.page);
+  }
+
+  function renderIntro() {
+    var intro = S.intro || { title: 'Dotazník', text: '' };
+    var start = el('button', { class: 'btn primary', type: 'button', text: 'Začít' });
+    start.style.marginLeft = '0';
+    start.addEventListener('click', function () { state.startedAt = Date.now(); go(1); });
+    app.appendChild(el('div', { class: 'card' }, [
+      el('div', { class: 'eyebrow', text: 'Výzkum Valuneto' }),
+      el('h1', { class: 'title', text: intro.title }),
+      el('p', { class: 'lead', text: intro.text }),
+      el('p', { class: 'meta', text: TOTAL + ' krátkých částí · anonymně' }),
+      start
+    ]));
+  }
+
+  function renderSection(k) {
+    var sec = sections[k - 1];
+    var pct = Math.round(((k - 1) / TOTAL) * 100);
+    app.appendChild(el('div', { class: 'progress' }, [
+      el('div', { class: 'row' }, [el('span', { class: 'eyebrow', text: 'Část ' + k + ' z ' + TOTAL })]),
+      el('div', { class: 'bar' }, [el('i', { style: 'width:' + Math.max(pct, 4) + '%' })])
+    ]));
+    app.appendChild(el('h1', { class: 'title', text: sec.title }));
+    sec.items.forEach(function (item) {
+      var node = renderItem(item);
+      app.appendChild(node);
+    });
+    sec.items.forEach(function (item) {
+      var node = document.getElementById('it-' + item.id);
+      if (node && !condOk(item)) node.hidden = true;
+    });
+    var last = k === TOTAL;
+    var nav = el('div', { class: 'nav' });
+    if (k > 1) {
+      var back = el('button', { class: 'btn ghost', type: 'button', text: 'Zpět' });
+      back.addEventListener('click', function () { go(k - 1); });
+      nav.appendChild(back);
+    }
+    var next = el('button', { class: 'btn primary', type: 'button', text: last ? 'Odeslat' : 'Pokračovat' });
+    next.addEventListener('click', function () {
+      if (!validate(sec)) return;
+      if (last) submit(next); else go(k + 1);
+    });
+    nav.appendChild(next);
+    app.appendChild(nav);
+    app.appendChild(el('div', { class: 'banner', id: 'banner', hidden: true }));
+  }
+
+  function renderDone() {
+    var outro = S.outro || { title: 'Díky!', text: '' };
+    var svg = '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0C140F" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="5 12.5 10 17.5 19 7"/></svg>';
+    var check = el('div', { class: 'check' });
+    check.innerHTML = svg;
+    app.appendChild(el('div', { class: 'card done' }, [check, el('h1', { class: 'title', text: outro.title }), el('p', { class: 'lead', text: outro.text })]));
+  }
+
+  /* ---------- odeslání ---------- */
+  function collect() {
+    var out = {};
+    sections.forEach(function (sec) {
+      sec.items.forEach(function (item) {
+        if (item.type === 'info' || !condOk(item)) return;
+        var v = state.answers[item.id];
+        if (answered(v)) out[item.id] = v;
+        var o = state.answers[item.id + '_jine'];
+        if (answered(o)) out[item.id + '_jine'] = o;
+      });
+    });
+    return out;
+  }
+
+  function submit(btn) {
+    var banner = document.getElementById('banner');
+    btn.disabled = true;
+    btn.textContent = 'Odesílám…';
+    if (banner) banner.hidden = true;
+    var payload = {
+      answers: collect(),
+      durationSec: state.startedAt ? Math.round((Date.now() - state.startedAt) / 1000) : null,
+      device: /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent) ? 'mobil' : 'počítač',
+      web: (document.getElementById('hp') || {}).value || ''
+    };
+    var ok = function () { state.finished = true; go(TOTAL + 1); };
+    var fail = function (e) {
+      btn.disabled = false;
+      btn.textContent = 'Odeslat';
+      if (banner) { banner.textContent = 'Odeslání se nepovedlo. Zkontroluj připojení a zkus to prosím znovu.'; banner.hidden = false; }
+      if (window.console) console.error(e);
+    };
+    send(payload, ok, fail);
+  }
+
+  window.addEventListener('beforeunload', function (e) {
+    if (state.page > 0 && !state.finished) { e.preventDefault(); e.returnValue = ''; }
+  });
+
+  window.__survey = { state: state, go: go, render: render };
+  render();
+}
+</script>
+<script>
+(function () {
+  // Otázky i odpovědi jdou přes Apps Script API, bez přihlášení do Googlu (funguje i v Safari s více Google účty).
+  var API = 'https://script.google.com/macros/s/AKfycbwuUhzVmYvHURaOVDSCpF00El5176o2md12tqE8rgX2mdWZt6ax121ErhdL4JDROgpWBw/exec';
+  var app = document.getElementById('app');
+  function card(title, text, withRetry) {
+    app.innerHTML = '';
+    var c = document.createElement('div');
+    c.className = 'card';
+    if (title) { var h = document.createElement('h1'); h.className = 'title'; h.textContent = title; c.appendChild(h); }
+    var p = document.createElement('p'); p.className = 'lead'; p.textContent = text; c.appendChild(p);
+    if (withRetry) {
+      var b = document.createElement('button'); b.className = 'btn primary'; b.type = 'button'; b.style.marginLeft = '0';
+      b.textContent = 'Zkusit znovu'; b.addEventListener('click', function () { location.reload(); }); c.appendChild(b);
+    }
+    app.appendChild(c);
+  }
+  function send(payload, ok, fail) {
+    fetch(API, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(payload) })
+      .then(function (r) { return r.json(); })
+      .then(function (res) { if (res && res.ok) ok(); else fail(res && res.error); })
+      .catch(fail);
+  }
+  function load(attempt) {
+    fetch(API + '?api=otazky')
+      .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+      .then(function (data) { valunetoSurvey(data, send); })
+      .catch(function (e) {
+        if (attempt < 2) setTimeout(function () { load(attempt + 1); }, 1500);
+        else { if (window.console) console.error(e); card('Omlouváme se', 'Dotazník se teď nepodařilo načíst. Zkontroluj připojení a zkus to prosím znovu.', true); }
+      });
+  }
+  card('', 'Načítám dotazník…', false);
+  load(0);
+})();
+</script>
+</body>
+</html>
